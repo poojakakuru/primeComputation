@@ -2,7 +2,6 @@
 
 echo "Welcome to Prime Number Computation program"
 
-#print 50 prime numbers in reverse order
 
 checkPrime () {
 
@@ -49,12 +48,24 @@ do
 done
 }
 
-#first 50 alternative prime numbers in reverse order
+checkunitsplace () {
+echo "Prime numbers containing one in its unit place are :"
+variable=0
+for values in ${array[@]}
+do
+   variable=$(( $values%10 ))
+   if [ $variable -eq 1 ]
+   then
+      echo $values
+   fi
+done
+}
+#first 100 prime numbers having 1 in its units place
 
 main () {
-echo "First 50 alternate prime numbers are"
-checkPrime 50
-alternateprimenumbers
+echo "First 100 prime numbers are"
+checkPrime 100
+checkunitsplace
 }
 
 main
