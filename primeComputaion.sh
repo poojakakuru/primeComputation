@@ -28,6 +28,29 @@ done
 echo "array of prime numbers are:"${array[@]}
 }
 
+findpalindrome () {
+
+for (( i=10;i<${#array[@]};i++ ))
+do
+number=${array[$i]}
+reversenumber=0
+
+while [ $number -ne 0 ]
+do
+   remainder=$(( $number%10 ))
+   reversenumber=$(( ($reversenumber*10)+$remainder ))
+   number=$(( $number/10 ))
+done
+
+if [ $reversenumber -eq ${array[i]} ]
+then
+   echo "palindrome number:" $reversenumber
+   palindrome[$i]=$reversenumber
+fi
+done
+echo "Array of palindrome prime numbers are:" ${palindrome[@]}
+}
+
 alternateprimenumbers () {
 counter=0
 echo "alternate prime numbers are:"
@@ -60,12 +83,12 @@ do
    fi
 done
 }
-#first 100 prime numbers having 1 in its units place
+#Prime numbers between 1 to 200 having palindrome numbers
 
 main () {
-echo "First 100 prime numbers are"
-checkPrime 100
-checkunitsplace
+echo "Prime numbers between 1 to 200 are"
+checkPrime 200
+findpalindrome
 }
 
 main
